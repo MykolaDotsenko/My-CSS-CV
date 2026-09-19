@@ -8,6 +8,26 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = ROOT / "index.html"
 CSS_PATH = ROOT / "styles.css"
 
+REQUIRED_IDS = {
+    "resume",
+    "focus-heading",
+    "stack-heading",
+    "education-heading",
+    "impact-heading",
+    "experience-heading",
+    "projects-heading",
+    "contact-heading",
+}
+
+REQUIRED_META = {
+    ("name", "description"),
+    ("property", "og:title"),
+    ("property", "og:description"),
+    ("property", "og:url"),
+    ("property", "og:image"),
+    ("name", "twitter:card"),
+}
+
 
 class SiteParser(HTMLParser):
     def __init__(self) -> None:
@@ -17,11 +37,13 @@ class SiteParser(HTMLParser):
         self.fragment_refs: list[str] = []
         self.images_without_alt: list[str] = []
         self.unsafe_blank_links: list[str] = []
+        self.meta_keys: set[tuple[str, str]] = set()
         self.main_count = 0
         self.h1_count = 0
+        self.form_count = 0
         self.has_lang = False
         self.has_viewport = False
-        self.has_description = False
+        self.has_canonical = False
         self.has_script = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -33,13 +55,20 @@ class SiteParser(HTMLParser):
             self.main_count += 1
         elif tag == "h1":
             self.h1_count += 1
+        elif tag == "form":
+            self.form_count += 1
         elif tag == "script":
             self.has_script = True
         elif tag == "meta":
             if data.get("name") == "viewport":
                 self.has_viewport = True
-            if data.get("name") == "description" and data.get("content"):
-                self.has_description = True
+            for key in ("name", "property"):
+                value = data.get(key)
+                if value and data.get("content"):
+                    self.meta_keys.add((key, value))
+        elif tag == "link":
+            if data.get("rel") == "canonical" and data.get("href"):
+                self.has_canonical = True
 
         element_id = data.get("id")
         if element_id:
@@ -84,10 +113,12 @@ def main() -> None:
 
     require(parser.has_lang, "HTML document must declare a language.")
     require(parser.has_viewport, "Viewport metadata is required.")
-    require(parser.has_description, "Description metadata is required.")
+    require(parser.has_canonical, "Canonical URL is required.")
+    require(REQUIRED_META <= parser.meta_keys, f"Missing metadata: {sorted(REQUIRED_META - parser.meta_keys)}")
     require(parser.main_count == 1, "Expected exactly one <main> element.")
     require(parser.h1_count == 1, "Expected exactly one <h1> element.")
-    require(not parser.has_script, "This project intentionally has no JavaScript runtime.")
+    require(parser.form_count == 0, "The resume should not contain a non-functional form.")
+    require(not parser.has_script, "The production page intentionally has no JavaScript runtime.")
     require("javascript:" not in html.lower(), "Inline JavaScript URLs are not allowed.")
     require(not parser.images_without_alt, f"Images missing alt text: {parser.images_without_alt}")
     require(not parser.unsafe_blank_links, f"Unsafe target=_blank links: {parser.unsafe_blank_links}")
@@ -96,6 +127,8 @@ def main() -> None:
     require(not duplicate_ids, f"Duplicate HTML IDs: {duplicate_ids}")
 
     id_set = set(parser.ids)
+    require(REQUIRED_IDS <= id_set, f"Missing recruiter-facing sections: {sorted(REQUIRED_IDS - id_set)}")
+
     missing_fragments = sorted(set(parser.fragment_refs) - id_set)
     require(not missing_fragments, f"Broken fragment links: {missing_fragments}")
 
@@ -110,6 +143,7 @@ def main() -> None:
     require("@media print" in css, "Print stylesheet is required.")
     require(":focus-visible" in css, "Visible keyboard focus styling is required.")
     require("prefers-reduced-motion" in css, "Reduced-motion handling is required.")
+    require("forced-colors" in css, "Forced-colors handling is required.")
 
     print("Site checks passed.")
 

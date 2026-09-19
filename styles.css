@@ -4,7 +4,7 @@
   --sidebar: #f7f8fa;
   --text: #17212b;
   --muted: #5f6b76;
-  --subtle: #8a949e;
+  --subtle: #66717b;
   --line: #dfe4e8;
   --accent: #2357d9;
   --shadow: 0 24px 80px rgba(25, 39, 52, 0.12);
@@ -34,8 +34,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family:
-    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -94,16 +93,6 @@ dl {
   padding: var(--space-5) 0;
 }
 
-.screen-note {
-  margin-bottom: var(--space-3);
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-align: right;
-  text-transform: uppercase;
-}
-
 .resume {
   overflow: hidden;
   border: 1px solid rgba(23, 33, 43, 0.08);
@@ -159,13 +148,16 @@ h1 {
   font-size: 1.05rem;
 }
 
-.profile-links {
+.profile-links,
+.contact-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
 }
 
-.profile-links a {
+.profile-links a,
+.contact-actions a,
+.section-link {
   display: inline-flex;
   gap: 0.35rem;
   align-items: center;
@@ -237,7 +229,8 @@ h1 {
   color: var(--accent);
 }
 
-.fact-list {
+.fact-list,
+.education-list {
   display: grid;
   gap: var(--space-3);
   margin-bottom: 0;
@@ -259,8 +252,29 @@ h1 {
   font-size: 0.94rem;
 }
 
-.sidebar-copy,
-.closing-copy {
+.education-list article {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.education-list h3 {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.education-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.education-list .meta {
+  color: var(--subtle);
+  font-size: 0.82rem;
+}
+
+.sidebar-copy {
   margin-bottom: 0;
   color: var(--muted);
 }
@@ -286,12 +300,26 @@ h1 {
   margin-bottom: var(--space-4);
 }
 
-.section-heading h2 {
+.section-heading-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.section-heading h2,
+.contact-section h2 {
   max-width: 24ch;
   margin-bottom: 0;
   font-size: clamp(1.5rem, 3vw, 2.05rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
+}
+
+.section-link {
+  flex: 0 0 auto;
+  margin-bottom: 0.15rem;
+  font-size: 0.9rem;
 }
 
 .metric-grid {
@@ -323,10 +351,25 @@ h1 {
   font-size: 0.92rem;
 }
 
+.experience-list {
+  display: grid;
+}
+
 .experience {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: var(--space-5);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line);
+}
+
+.experience:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.experience:last-child {
+  padding-bottom: 0;
 }
 
 .experience-meta {
@@ -346,7 +389,13 @@ h1 {
 }
 
 .experience-body > p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.experience-current .experience-body > p {
   margin-bottom: var(--space-3);
+  color: var(--text);
   font-size: 1.02rem;
   font-weight: 650;
 }
@@ -403,6 +452,17 @@ h1 {
   font-weight: 750;
 }
 
+.contact-section {
+  display: flex;
+  gap: var(--space-5);
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.contact-actions {
+  flex: 0 0 auto;
+}
+
 .page-footer {
   display: flex;
   gap: var(--space-3);
@@ -456,10 +516,6 @@ h1 {
     padding: var(--space-3) 0;
   }
 
-  .screen-note {
-    text-align: left;
-  }
-
   .resume {
     border-radius: 20px;
   }
@@ -480,15 +536,16 @@ h1 {
   }
 
   .project-heading,
+  .section-heading-row,
+  .contact-section,
   .page-footer {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .project-heading {
-    display: flex;
-  }
-
+  .project-heading,
+  .section-heading-row,
+  .contact-section,
   .page-footer {
     display: flex;
   }
@@ -517,7 +574,7 @@ h1 {
 
 @page {
   size: A4;
-  margin: 11mm;
+  margin: 10mm;
 }
 
 @media print {
@@ -529,15 +586,16 @@ h1 {
 
   body {
     background: white;
-    font-size: 9.5pt;
-    line-height: 1.42;
+    font-size: 8.8pt;
+    line-height: 1.38;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   .skip-link,
-  .screen-note,
-  .page-footer {
+  .page-footer,
+  .section-link,
+  .contact-section {
     display: none;
   }
 
@@ -555,21 +613,21 @@ h1 {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 34mm;
-    gap: 8mm;
-    padding: 0 0 7mm;
+    grid-template-columns: minmax(0, 1fr) 32mm;
+    gap: 7mm;
+    padding: 0 0 6mm;
   }
 
   h1 {
-    font-size: 30pt;
+    font-size: 28pt;
   }
 
   .headline {
-    font-size: 13pt;
+    font-size: 12pt;
   }
 
   .summary {
-    font-size: 9.5pt;
+    font-size: 9pt;
   }
 
   .portrait-shell {
@@ -578,32 +636,32 @@ h1 {
   }
 
   .portrait {
-    width: 31mm;
+    width: 29mm;
     border-radius: 4mm;
   }
 
   .resume-grid {
-    grid-template-columns: 54mm minmax(0, 1fr);
+    grid-template-columns: 52mm minmax(0, 1fr);
   }
 
   .sidebar {
-    padding: 7mm 6mm 0 0;
+    padding: 6mm 5mm 0 0;
     border-right: 1px solid var(--line);
     background: white;
   }
 
   .content {
-    padding: 7mm 0 0 7mm;
+    padding: 6mm 0 0 6mm;
   }
 
   .sidebar-section {
-    padding-bottom: 5mm;
-    margin-bottom: 5mm;
+    padding-bottom: 4mm;
+    margin-bottom: 4mm;
   }
 
   .resume-section {
-    padding-bottom: 6mm;
-    margin-bottom: 6mm;
+    padding-bottom: 5mm;
+    margin-bottom: 5mm;
   }
 
   .section-heading {
@@ -611,33 +669,42 @@ h1 {
   }
 
   .section-heading h2 {
-    font-size: 14pt;
+    font-size: 13pt;
   }
 
   .metric-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3mm;
+    gap: 2.5mm;
   }
 
   .metric,
   .project {
-    padding: 3.5mm;
+    padding: 3mm;
     border-radius: 3mm;
     break-inside: avoid;
   }
 
   .metric strong {
-    font-size: 14pt;
+    font-size: 13pt;
   }
 
   .experience {
-    grid-template-columns: 36mm minmax(0, 1fr);
-    gap: 5mm;
+    grid-template-columns: 34mm minmax(0, 1fr);
+    gap: 4mm;
+    padding: 3.5mm 0;
     break-inside: avoid;
   }
 
-  .project {
-    margin-bottom: 0;
+  .experience-current .experience-body > p {
+    margin-bottom: 2mm;
+  }
+
+  .detail-list li + li {
+    margin-top: 1mm;
+  }
+
+  .project-list {
+    gap: 2.5mm;
   }
 
   a {

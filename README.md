@@ -2,22 +2,28 @@
 
 A recruiter-facing, print-ready software engineering resume built with **semantic HTML and modern CSS only**.
 
-The repository started as an early CSS learning exercise. The current version keeps that original constraint but upgrades the project into a deliberately small engineering case study: clear content hierarchy, responsive layout, accessibility, print output, automated structural checks, and no unnecessary runtime code.
+**Live site:** https://mykoladotsenko.github.io/My-CSS-CV/
 
-## What the page does
+The repository started as an early CSS learning exercise. The current version keeps that constraint while turning the project into a focused engineering case study: high-signal content, responsive layout, accessibility, print output, browser verification, and no runtime JavaScript.
 
-- presents a concise software-engineering profile
-- highlights production impact and current experience
-- links to selected portfolio projects
-- adapts cleanly across desktop, tablet, and mobile
-- prints to an A4-friendly resume/PDF from the browser
-- works without JavaScript, a framework, a bundler, or runtime dependencies
+## Product goal
+
+The live page is intentionally optimized for a recruiter or hiring manager scanning quickly:
+
+1. identity and engineering focus
+2. measurable production impact
+3. software-engineering trajectory
+4. selected projects
+5. technical strengths and education
+6. a direct path to GitHub or LinkedIn
+
+Implementation commentary stays here in the README instead of competing with hiring information on the live page.
 
 ## Why no framework?
 
-A resume is static content. React, Next.js, a design system, or a JavaScript animation layer would increase the maintenance surface without solving a product requirement.
+A resume is static content. React, Next.js, a design system, a state library, or a runtime animation layer would increase the maintenance surface without solving a product requirement.
 
-The implementation therefore uses the smallest appropriate stack:
+The production page therefore has:
 
 - semantic HTML5
 - modern CSS
@@ -25,60 +31,63 @@ The implementation therefore uses the smallest appropriate stack:
 - fluid typography with `clamp()`
 - CSS custom properties as design tokens
 - responsive breakpoints
-- `:focus-visible` keyboard states
+- `:focus-visible`
 - `prefers-reduced-motion`
-- dedicated `@media print` rules
-- GitHub Actions for automated checks
+- forced-colors support
+- dedicated A4-oriented print rules
+- **zero runtime JavaScript**
+- **zero runtime dependencies**
 
-## Design principles
+Browser tooling exists only in development/CI.
 
-### 1. Content first
+## Quality strategy
 
-The visual hierarchy is built around what a recruiter needs to scan quickly: role, focus, production impact, experience, technical strengths, and selected projects.
-
-### 2. One source, two outputs
-
-The same HTML serves both the responsive website and the print/PDF resume. Print CSS removes screen-only chrome, flattens decorative surfaces, and switches to an A4-oriented grid.
-
-### 3. Proportional architecture
-
-There is no component framework, runtime state, client-side routing, form submission layer, or animation dependency because the page does not need them.
-
-### 4. Accessibility by default
-
-The page includes:
-
-- a skip link
-- semantic landmarks and heading structure
-- descriptive image alternative text
-- visible keyboard focus states
-- safe external-link behavior
-- reduced-motion handling
-- readable contrast and scalable typography
-
-## Quality checks
-
-Run:
+### Static invariants
 
 ```bash
 python scripts/check_site.py
 ```
 
-The zero-dependency checker verifies important invariants, including:
+The zero-dependency checker validates:
 
 - one `<main>` and one `<h1>`
-- a document language
+- document language
 - viewport and description metadata
+- canonical URL and core social metadata
 - unique HTML IDs
-- valid local file references
-- valid internal fragment links
+- local files and fragment links
 - image alternative text
-- safe `target="_blank"` links
-- no inline JavaScript
-- no `<script>` runtime
-- presence of print and focus-visible CSS
+- safe external links
+- no forms or JavaScript runtime
+- print, focus-visible, reduced-motion, and forced-colors CSS
+- expected recruiter-facing sections
 
-GitHub Actions runs the same checks on pushes and pull requests.
+### Browser, accessibility, and print checks
+
+```bash
+npm install
+npx playwright install chromium
+npm run test:e2e
+```
+
+Playwright checks the page in desktop and mobile Chromium for:
+
+- successful render
+- no page errors or console errors
+- no horizontal overflow
+- critical recruiter-facing content
+- expected external project/profile links
+- WCAG A/AA serious/critical violations via axe
+- print media behavior
+- successful A4 PDF generation
+
+These are development-only dependencies. They do not change the runtime architecture of the site.
+
+## CI
+
+GitHub Actions runs static validation and browser/a11y/print checks on pull requests and pushes to `main`.
+
+The repository also contains a GitHub Pages deployment workflow for the static production assets.
 
 ## Project structure
 
@@ -86,38 +95,41 @@ GitHub Actions runs the same checks on pushes and pull requests.
 .
 ├── .github/
 │   └── workflows/
+│       ├── pages.yml
 │       └── quality.yml
 ├── scripts/
 │   └── check_site.py
+├── tests/
+│   └── resume.spec.js
 ├── avatar.jpg
 ├── favicon.svg
 ├── index.html
+├── package.json
+├── playwright.config.js
 ├── styles.css
 └── README.md
 ```
 
 ## Run locally
 
-No installation is required.
-
-Open `index.html` directly, or serve the directory with any static HTTP server:
+No application installation is required:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open:
+Then open `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
+Install npm packages only when running the browser verification suite.
 
 ## Print / PDF
 
-Use the browser's print command and choose **Save as PDF**. The page has dedicated A4 print rules and automatically removes screen-only labels and footer text.
+Use the browser's print command and choose **Save as PDF**. Screen-only actions are removed in print media and the layout switches to an A4-oriented presentation.
 
-## Engineering goal
+## Engineering rationale
 
-The project is intentionally small. Its value is not feature count; it is showing that a static page can still demonstrate professional judgment:
+The useful signal in this repository is not feature count. It is proportionality:
 
-**use the simplest architecture that fully satisfies the product, then make that implementation exceptionally clear, resilient, accessible, and maintainable.**
+> Use the simplest architecture that fully satisfies the product, then make that implementation clear, accessible, verifiable, and maintainable.
+
+The live surface serves recruiters. The README and tests provide the engineering evidence.

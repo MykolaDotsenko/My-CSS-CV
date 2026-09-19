@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mykola Dotsenko — CSS Resume</title>
+    <title>Mykola Dotsenko — Software Engineer</title>
     <meta
       name="description"
-      content="CSS-first resume for Mykola Dotsenko, a Software Engineer focused on Python/Django, backend systems, data integrations, and reliable web products.">
+      content="Mykola Dotsenko — Software Engineer focused on Python/Django, backend systems, data integrations, performance, and reliable web products.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f4f6f8">
+
+    <link rel="canonical" href="https://mykoladotsenko.github.io/My-CSS-CV/">
 
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Mykola Dotsenko — Software Engineer">
     <meta
       property="og:description"
-      content="A lightweight, print-ready software engineering resume built with semantic HTML and modern CSS.">
+      content="Backend-first software engineering for reliable products and data flows.">
+    <meta property="og:url" content="https://mykoladotsenko.github.io/My-CSS-CV/">
+    <meta property="og:site_name" content="Mykola Dotsenko — Software Engineer">
+    <meta
+      property="og:image"
+      content="https://mykoladotsenko.github.io/My-CSS-CV/avatar.jpg">
+    <meta
+      property="og:image:alt"
+      content="Portrait of Mykola Dotsenko, Software Engineer">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mykola Dotsenko — Software Engineer">
+    <meta
+      name="twitter:description"
+      content="Backend-first software engineering for reliable products and data flows.">
+    <meta
+      name="twitter:image"
+      content="https://mykoladotsenko.github.io/My-CSS-CV/avatar.jpg">
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
@@ -25,10 +44,6 @@
     <a class="skip-link" href="#resume">Skip to resume</a>
 
     <div class="page">
-      <p class="screen-note" aria-label="Project implementation note">
-        CSS Resume · semantic HTML · zero JavaScript · print ready
-      </p>
-
       <main class="resume" id="resume">
         <header class="hero">
           <div class="hero-copy">
@@ -39,7 +54,7 @@
             </p>
             <p class="summary">
               I build production web applications with a focus on Python/Django,
-              data-heavy integrations, validation, maintainability, and pragmatic
+              data-heavy integrations, validation, performance, and pragmatic
               full-stack delivery.
             </p>
 
@@ -56,7 +71,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn <span aria-hidden="true">↗</span>
+                Connect on LinkedIn <span aria-hidden="true">↗</span>
               </a>
             </nav>
           </div>
@@ -108,24 +123,29 @@
               </dl>
             </section>
 
-            <section class="sidebar-section" aria-labelledby="principles-heading">
-              <p class="section-label">Approach</p>
-              <h2 id="principles-heading">How I work</h2>
-              <ul class="compact-list">
-                <li>Prefer explicit data boundaries.</li>
-                <li>Keep architecture proportional.</li>
-                <li>Automate repeatable quality checks.</li>
-                <li>Optimize for maintainability and ROI.</li>
-              </ul>
+            <section class="sidebar-section" aria-labelledby="education-heading">
+              <p class="section-label">Education</p>
+              <h2 id="education-heading">Software engineering</h2>
+              <div class="education-list">
+                <article>
+                  <h3>M.Sc. Software Engineering</h3>
+                  <p>National Technical University “Kharkiv Polytechnic Institute”</p>
+                  <p class="meta">2026 — Present</p>
+                </article>
+                <article>
+                  <h3>Earlier higher education</h3>
+                  <p>Accounting &amp; Audit and Agronomy</p>
+                </article>
+              </div>
             </section>
 
             <section class="sidebar-section sidebar-section-last" aria-labelledby="background-heading">
               <p class="section-label">Background</p>
-              <h2 id="background-heading">Before software</h2>
+              <h2 id="background-heading">Business &amp; operations</h2>
               <p class="sidebar-copy">
-                Experience across agriculture, sales, accounting, and production
+                Earlier work across agriculture, sales, accounting, and production
                 shaped a practical approach to ownership, process improvement, and
-                business-facing engineering.
+                translating business needs into reliable technical solutions.
               </p>
             </section>
           </aside>
@@ -140,11 +160,11 @@
               <div class="metric-grid">
                 <div class="metric">
                   <strong>~200k</strong>
-                  <p>CRM and contact records handled across production data flows.</p>
+                  <p>CRM and contact records reconciled across production data flows.</p>
                 </div>
                 <div class="metric">
                   <strong>3.5s → ~300ms</strong>
-                  <p>Key search-flow performance improvement.</p>
+                  <p>Key search-flow latency after backend and query-path optimization.</p>
                 </div>
                 <div class="metric">
                   <strong>~1,600</strong>
@@ -156,43 +176,85 @@
             <section class="resume-section" aria-labelledby="experience-heading">
               <div class="section-heading">
                 <p class="section-label">Experience</p>
-                <h2 id="experience-heading">Professional work</h2>
+                <h2 id="experience-heading">Software engineering trajectory</h2>
               </div>
 
-              <article class="experience">
-                <div class="experience-meta">
-                  <h3 class="role">Software Developer</h3>
-                  <p>Techco / Bo</p>
-                  <p><time datetime="2025-05">May 2025</time> — Present</p>
-                </div>
+              <div class="experience-list">
+                <article class="experience experience-current">
+                  <div class="experience-meta">
+                    <h3 class="role">Software Developer</h3>
+                    <p>Techco / Bo</p>
+                    <p><time datetime="2025-05">May 2025</time> — Present</p>
+                  </div>
 
-                <div class="experience-body">
-                  <p>
-                    Production delivery across backend systems, APIs, databases,
-                    integrations, and the frontend surfaces that connect them.
-                  </p>
-                  <ul class="detail-list">
-                    <li>
-                      Design reconciliation and ingestion workflows with explicit
-                      validation, ambiguity handling, and idempotent processing.
-                    </li>
-                    <li>
-                      Improve query paths, data flows, and application behavior where
-                      reliability or performance directly affects users.
-                    </li>
-                    <li>
-                      Strengthen delivery with automated tests, static checks, clearer
-                      boundaries, and maintainable implementation choices.
-                    </li>
-                  </ul>
-                </div>
-              </article>
+                  <div class="experience-body">
+                    <p>
+                      Production delivery across backend systems, APIs, databases,
+                      integrations, and the frontend surfaces that connect them.
+                    </p>
+                    <ul class="detail-list">
+                      <li>
+                        Design reconciliation and ingestion workflows with explicit
+                        validation, ambiguity handling, and idempotent processing.
+                      </li>
+                      <li>
+                        Improve query paths, data flows, and application behavior where
+                        reliability or performance directly affects users.
+                      </li>
+                      <li>
+                        Strengthen delivery with automated tests, static checks, clearer
+                        boundaries, and maintainable implementation choices.
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="experience experience-compact">
+                  <div class="experience-meta">
+                    <h3 class="role">Software Developer</h3>
+                    <p>Duotone</p>
+                    <p>Previous role</p>
+                  </div>
+
+                  <div class="experience-body">
+                    <p>
+                      Full-stack product work with Next.js, TypeScript, Tailwind,
+                      PostgreSQL/Supabase, and search-focused features.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="experience experience-compact">
+                  <div class="experience-meta">
+                    <h3 class="role">Software Developer Intern</h3>
+                    <p>Nidos</p>
+                    <p>Earlier internship</p>
+                  </div>
+
+                  <div class="experience-body">
+                    <p>
+                      React/TanStack development, REST API integration, Postman-based
+                      API work, and Playwright browser testing.
+                    </p>
+                  </div>
+                </article>
+              </div>
             </section>
 
             <section class="resume-section" aria-labelledby="projects-heading">
-              <div class="section-heading">
-                <p class="section-label">Selected work</p>
-                <h2 id="projects-heading">Projects that show how I engineer</h2>
+              <div class="section-heading section-heading-row">
+                <div>
+                  <p class="section-label">Selected work</p>
+                  <h2 id="projects-heading">Projects that show how I engineer</h2>
+                </div>
+                <a
+                  class="section-link"
+                  href="https://github.com/MykolaDotsenko"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  All repositories <span aria-hidden="true">↗</span>
+                </a>
               </div>
 
               <div class="project-list">
@@ -255,18 +317,27 @@
               </div>
             </section>
 
-            <section class="resume-section resume-section-last" aria-labelledby="project-note-heading">
-              <div class="section-heading">
-                <p class="section-label">About this page</p>
-                <h2 id="project-note-heading">CSS is the point, not a limitation</h2>
+            <section class="resume-section resume-section-last contact-section" aria-labelledby="contact-heading">
+              <div>
+                <p class="section-label">Connect</p>
+                <h2 id="contact-heading">Interested in backend, data, or integration work?</h2>
               </div>
-              <p class="closing-copy">
-                This resume intentionally uses semantic HTML and CSS only. There is
-                no runtime framework, JavaScript bundle, animation library, or
-                component dependency. The implementation demonstrates responsive
-                layout, fluid typography, accessibility, print design, and visual
-                hierarchy with the smallest appropriate toolset.
-              </p>
+              <div class="contact-actions">
+                <a
+                  href="https://www.linkedin.com/in/mykola-dotsenko/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href="https://github.com/MykolaDotsenko"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </section>
           </div>
         </div>
@@ -274,7 +345,7 @@
 
       <footer class="page-footer">
         <p>Mykola Dotsenko · Software Engineer</p>
-        <p>Designed to work on screen and as a clean PDF via browser print.</p>
+        <p>Responsive on screen · A4-ready in browser print</p>
       </footer>
     </div>
   </body>
