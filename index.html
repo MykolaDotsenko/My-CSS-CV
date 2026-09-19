@@ -1,106 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Mykola CV</title>
-    <link href="styles.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="container">
-    <div class="info">
-    <img src="avatar.jpg" alt="My photo" class="avatar" /></td>
-             
-           <div class="info-text">
-    <h1>Mykola Dotsenko</h1>
-          <p>
-            
-Future Professional <strong>Front-End Developer</strong>
-          </p>
-          <p>Father of a little princess</p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-          <h4>My social pages</h4>
-          
-           
-              <a href="https://www.linkedin.com/in/mykola-dotsenko/" target="_blank"
-                >Linkedin</a >
-          |
-        
-              <a href="https://www.instagram.com/nikolai_dnd/" target="_blank"
-                >Instagram</a>
-            </div>
+    <title>Mykola Dotsenko — CSS Resume</title>
+    <meta
+      name="description"
+      content="CSS-first resume for Mykola Dotsenko, a Software Engineer focused on Python/Django, backend systems, data integrations, and reliable web products.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f4f6f8">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Mykola Dotsenko — Software Engineer">
+    <meta
+      property="og:description"
+      content="A lightweight, print-ready software engineering resume built with semantic HTML and modern CSS.">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#resume">Skip to resume</a>
+
+    <div class="page">
+      <p class="screen-note" aria-label="Project implementation note">
+        CSS Resume · semantic HTML · zero JavaScript · print ready
+      </p>
+
+      <main class="resume" id="resume">
+        <header class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Software Engineer · Turku, Finland</p>
+            <h1>Mykola Dotsenko</h1>
+            <p class="headline">
+              Backend-first engineering for reliable products and data flows.
+            </p>
+            <p class="summary">
+              I build production web applications with a focus on Python/Django,
+              data-heavy integrations, validation, maintainability, and pragmatic
+              full-stack delivery.
+            </p>
+
+            <nav class="profile-links" aria-label="Professional profiles">
+              <a
+                href="https://github.com/MykolaDotsenko"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mykola-dotsenko/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+            </nav>
           </div>
 
-  <div class="card bg-yellow">
-    <h2>My hobbies</h2>
-    <ol class="list">
-      <li>Photography</li>
-      <li>Coding</li>
-      <li>Gym</li>
-      <li>Traveling</li>
-    </ol>
-  </div>
-  <div class="card bg-green">
-    <h2>Experience</h2>
+          <div class="portrait-shell">
+            <img
+              class="portrait"
+              src="avatar.jpg"
+              alt="Portrait of Mykola Dotsenko"
+              width="220"
+              height="220"
+              fetchpriority="high">
+          </div>
+        </header>
 
-    <table class="table">
-      <tr>
-        <td>Sauvon Sailike</td>
-        <td>Truki driver</td>
-        <td>2022-2023</td>
-      </tr>
-    
-      <tr>
-        <td>Huiskula</td>
-        <td>Gardener</td>
-        <td>2020-2022</td>
-      </tr>
+        <div class="resume-grid">
+          <aside class="sidebar" aria-label="Profile summary">
+            <section class="sidebar-section" aria-labelledby="focus-heading">
+              <p class="section-label">Focus</p>
+              <h2 id="focus-heading">Engineering strengths</h2>
+              <ul class="compact-list">
+                <li>Backend systems</li>
+                <li>Data integrations</li>
+                <li>Validation &amp; consistency</li>
+                <li>Performance &amp; reliability</li>
+              </ul>
+            </section>
 
-      <tr>
-        <td>Agrolife</td>
-        <td>Sales manager</td>
-        <td>2016-2020</td>
-      </tr>
-    </table>
+            <section class="sidebar-section" aria-labelledby="stack-heading">
+              <p class="section-label">Core stack</p>
+              <h2 id="stack-heading">Technologies</h2>
+              <dl class="fact-list">
+                <div>
+                  <dt>Backend</dt>
+                  <dd>Python, Django, DRF, ASP.NET Core</dd>
+                </div>
+                <div>
+                  <dt>Data</dt>
+                  <dd>PostgreSQL, SQL, ORM design, reconciliation</dd>
+                </div>
+                <div>
+                  <dt>Frontend</dt>
+                  <dd>React, Next.js, TypeScript, HTML, CSS</dd>
+                </div>
+                <div>
+                  <dt>Delivery</dt>
+                  <dd>GitHub Actions, Docker, testing, static analysis</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="sidebar-section" aria-labelledby="principles-heading">
+              <p class="section-label">Approach</p>
+              <h2 id="principles-heading">How I work</h2>
+              <ul class="compact-list">
+                <li>Prefer explicit data boundaries.</li>
+                <li>Keep architecture proportional.</li>
+                <li>Automate repeatable quality checks.</li>
+                <li>Optimize for maintainability and ROI.</li>
+              </ul>
+            </section>
+
+            <section class="sidebar-section sidebar-section-last" aria-labelledby="background-heading">
+              <p class="section-label">Background</p>
+              <h2 id="background-heading">Before software</h2>
+              <p class="sidebar-copy">
+                Experience across agriculture, sales, accounting, and production
+                shaped a practical approach to ownership, process improvement, and
+                business-facing engineering.
+              </p>
+            </section>
+          </aside>
+
+          <div class="content">
+            <section class="resume-section" aria-labelledby="impact-heading">
+              <div class="section-heading">
+                <p class="section-label">Selected impact</p>
+                <h2 id="impact-heading">Production outcomes</h2>
+              </div>
+
+              <div class="metric-grid">
+                <div class="metric">
+                  <strong>~200k</strong>
+                  <p>CRM and contact records handled across production data flows.</p>
+                </div>
+                <div class="metric">
+                  <strong>3.5s → ~300ms</strong>
+                  <p>Key search-flow performance improvement.</p>
+                </div>
+                <div class="metric">
+                  <strong>~1,600</strong>
+                  <p>Duplicate assignment records resolved with stronger integrity safeguards.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="resume-section" aria-labelledby="experience-heading">
+              <div class="section-heading">
+                <p class="section-label">Experience</p>
+                <h2 id="experience-heading">Professional work</h2>
+              </div>
+
+              <article class="experience">
+                <div class="experience-meta">
+                  <h3 class="role">Software Developer</h3>
+                  <p>Techco / Bo</p>
+                  <p><time datetime="2025-05">May 2025</time> — Present</p>
+                </div>
+
+                <div class="experience-body">
+                  <p>
+                    Production delivery across backend systems, APIs, databases,
+                    integrations, and the frontend surfaces that connect them.
+                  </p>
+                  <ul class="detail-list">
+                    <li>
+                      Design reconciliation and ingestion workflows with explicit
+                      validation, ambiguity handling, and idempotent processing.
+                    </li>
+                    <li>
+                      Improve query paths, data flows, and application behavior where
+                      reliability or performance directly affects users.
+                    </li>
+                    <li>
+                      Strengthen delivery with automated tests, static checks, clearer
+                      boundaries, and maintainable implementation choices.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </section>
+
+            <section class="resume-section" aria-labelledby="projects-heading">
+              <div class="section-heading">
+                <p class="section-label">Selected work</p>
+                <h2 id="projects-heading">Projects that show how I engineer</h2>
+              </div>
+
+              <div class="project-list">
+                <article class="project">
+                  <div class="project-heading">
+                    <h3>MovieShelf</h3>
+                    <span>Django · PostgreSQL</span>
+                  </div>
+                  <p>
+                    Relational movie catalog with authentication, ranked PostgreSQL
+                    full-text search, database constraints, production settings,
+                    browser tests, accessibility checks, and CI.
+                  </p>
+                  <a
+                    href="https://github.com/MykolaDotsenko/DjangoMovieProject"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View source <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+
+                <article class="project">
+                  <div class="project-heading">
+                    <h3>RPS League</h3>
+                    <span>Next.js · TypeScript</span>
+                  </div>
+                  <p>
+                    Legacy-API normalization pipeline that validates, deduplicates,
+                    and queries a large noisy dataset behind a server-rendered
+                    leaderboard and match-history product.
+                  </p>
+                  <a
+                    href="https://github.com/MykolaDotsenko/reaktor-mykola"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View source <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+
+                <article class="project">
+                  <div class="project-heading">
+                    <h3>JunaLippu</h3>
+                    <span>Next.js · tRPC · Prisma</span>
+                  </div>
+                  <p>
+                    Railway-booking application with server-owned booking rules,
+                    segment-aware seat inventory, validation, authentication, and
+                    concurrency safeguards.
+                  </p>
+                  <a
+                    href="https://github.com/MykolaDotsenko/JunaLippu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View source <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+              </div>
+            </section>
+
+            <section class="resume-section resume-section-last" aria-labelledby="project-note-heading">
+              <div class="section-heading">
+                <p class="section-label">About this page</p>
+                <h2 id="project-note-heading">CSS is the point, not a limitation</h2>
+              </div>
+              <p class="closing-copy">
+                This resume intentionally uses semantic HTML and CSS only. There is
+                no runtime framework, JavaScript bundle, animation library, or
+                component dependency. The implementation demonstrates responsive
+                layout, fluid typography, accessibility, print design, and visual
+                hierarchy with the smallest appropriate toolset.
+              </p>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="page-footer">
+        <p>Mykola Dotsenko · Software Engineer</p>
+        <p>Designed to work on screen and as a clean PDF via browser print.</p>
+      </footer>
     </div>
-    <div class="card bg-red">
-    <h2>My resources for studying</h2>
-    <ul class="link-list">
-      <li>
-        <a href="https://www.udemy.com/course/webdeveloper/" target="_blank"
-          >Udemy</a
-        >
-      </li>
-      <li>
-        <a href="https://scrimba.com/learn/introhtmlcss/introduction-c4GE7ns6" target="_blank"
-          >Scrimba</a
-        >
-      </li>
-    </ul>
-  </div>
-
-   <div class="contact">
-    <h2>Contact me</h2>
-
-    <form action="/">
-      <div class="row">
-      <div class="form-group">
-      <label for="name">Your name</label>
-      <input type="text" id="name" placeholder="Enter your name..." />
-    </div>
-    <div class="form-group">
-      <label for="name">Your email</label>
-      <input type="text" id="name" placeholder="Enter your email..." />
-    </div>
-  </div>
-    <div class="form-group">
-      <label for="text">Your message</label>
-
-      <textarea name="text" id="" cols="30" rows="10"></textarea>
-    </div>
-
-      <input class="btn" type="submit" value="Apply" />
-    </form>
-  </div>
-  </div>
   </body>
 </html>
