@@ -23,7 +23,7 @@ test("renders the recruiter-facing content without horizontal overflow", async (
   await expect(page.getByRole("heading", { name: "Production outcomes" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Software engineering trajectory" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Projects that show how I engineer" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Software engineering" })).toBeVisible();
+  await expect(page.locator("#education-heading")).toBeVisible();
 
   const overflows = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(overflows).toBe(false);
